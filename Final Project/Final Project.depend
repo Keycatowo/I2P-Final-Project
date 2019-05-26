@@ -231,3 +231,37 @@
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_native_dialog.h
 	"allegro5/allegro.h"
 
+1558715787 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_1.c
+	<stdio.h>
+	<allegro5/allegro.h>
+
+1558753764 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_2.c
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+
+1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_primitives.h
+	<allegro5/allegro.h>
+
+1362327499 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_image.h
+
+1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_font.h
+	"allegro5/allegro.h"
+
+1362327499 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_ttf.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_font.h"
+
+1558763142 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_3.c
+	<stdio.h>
+	<allegro5/allegro.h>
+
+1558769061 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_5.c
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
