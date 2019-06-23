@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1558439939 source:d:\documents\i2p_final_project\final project\main.cpp
+1561296982 source:d:\documents\i2p_final_project\final project\main.cpp
+	<stdio.h>
 	<allegro5/allegro.h>
-	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"head_files.h"
 
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro.h
 	"allegro5/base.h"
@@ -231,11 +233,11 @@
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_native_dialog.h
 	"allegro5/allegro.h"
 
-1558715787 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_1.c
+1561175173 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_1.c
 	<stdio.h>
 	<allegro5/allegro.h>
 
-1558753764 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_2.c
+1561175456 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_2.c
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
@@ -264,4 +266,31 @@
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
+
+1561226543 source:d:\documents\i2p_final_project\allegro-5\tutorial\task_4.c
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+
+1561291342 source:d:\documents\i2p_final_project\final project\game_debug.cpp
+	"head_files.h"
+	<stdio.h>
+
+1561296961 d:\documents\i2p_final_project\final project\head_files.h
+
+1561295613 source:d:\documents\i2p_final_project\final project\game_init.cpp
+	"head_files.h"
+
+1561295569 source:d:\documents\i2p_final_project\final project\game_run.cpp
+	"head_files.h"
+
+1561296374 source:d:\documents\i2p_final_project\final project\head_files.h
+	<stdio.h>
+	<allegro5/allegro.h>
+
+1561295764 source:d:\documents\i2p_final_project\final project\head_files.cpp
+	"head_files.h"
+
+1561292715 d:\documents\i2p_final_project\final project\head_files.cpp
+	"head_files.h"
 

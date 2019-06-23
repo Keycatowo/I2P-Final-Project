@@ -36,6 +36,23 @@
 			<Add option="-Wall" />
 			<Add directory="../allegro-5.0.10-mingw-4.7.0/allegro-5.0.10-mingw-4.7.0/include" />
 		</Compiler>
+		<Unit filename="game_debug.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="game_init.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="game_run.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="head_files.cpp">
+			<Option compile="0" />
+			<Option link="0" />
+		</Unit>
+		<Unit filename="head_files.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />
