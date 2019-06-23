@@ -135,12 +135,12 @@ int process_event(){
 
 int game_run() {
     int error = 0;
-    // First window(Menu)
+    /// 0 : Menu
     if(window == 0){
         if (!al_is_event_queue_empty(event_queue)) {
             error = process_event1();
             if(judge_next_window) {
-                window = 2;
+                window = 1;
                 // Setting Character
                 character1.x = WIDTH / 2;
                 character1.y = HEIGHT / 2 + 150;
@@ -165,7 +165,7 @@ int game_run() {
         }
     }
     // Second window(Main Game)
-    else if(window == 2){
+    else if(window == 1){
         // Change Image for animation
         al_draw_bitmap(background, 0,0, 0);
         if(ture) al_draw_bitmap(character1.image_path, character1.x, character1.y, 0);

@@ -303,7 +303,7 @@
 	<allegro5/allegro_ttf.h>
 	"head_files.h"
 
-1561308731 source:d:\documents\i2p_final_project\final project\game_run.cpp
+1561309873 source:d:\documents\i2p_final_project\final project\game_run.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
