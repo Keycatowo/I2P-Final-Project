@@ -1,8 +1,13 @@
 # depslib dependency file v1.0
-1561296982 source:d:\documents\i2p_final_project\final project\main.cpp
+1561308982 source:d:\documents\i2p_final_project\final project\main.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
 	"head_files.h"
 
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro.h
@@ -272,16 +277,41 @@
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
 
-1561291342 source:d:\documents\i2p_final_project\final project\game_debug.cpp
-	"head_files.h"
+1561298334 source:d:\documents\i2p_final_project\final project\game_debug.cpp
 	<stdio.h>
-
-1561296961 d:\documents\i2p_final_project\final project\head_files.h
-
-1561295613 source:d:\documents\i2p_final_project\final project\game_init.cpp
+	<stdlib.h>
 	"head_files.h"
 
-1561295569 source:d:\documents\i2p_final_project\final project\game_run.cpp
+1561308486 d:\documents\i2p_final_project\final project\head_files.h
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+
+1561308386 source:d:\documents\i2p_final_project\final project\game_init.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	"head_files.h"
+
+1561308731 source:d:\documents\i2p_final_project\final project\game_run.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_primitives.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_audio.h>
+	<allegro5/allegro_acodec.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
 	"head_files.h"
 
 1561296374 source:d:\documents\i2p_final_project\final project\head_files.h
@@ -293,4 +323,11 @@
 
 1561292715 d:\documents\i2p_final_project\final project\head_files.cpp
 	"head_files.h"
+
+1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_audio.h
+	"allegro5/allegro.h"
+
+1362327499 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro_acodec.h
+	"allegro5/allegro.h"
+	"allegro5/allegro_audio.h"
 

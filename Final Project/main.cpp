@@ -1,36 +1,49 @@
 #include <stdio.h>
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_primitives.h>              //Our primitive header file
+#include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_image.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 #include "head_files.h"
 
-#define GAME_TERMINATE 666
 
-
+// ALLEGRO Variables
 ALLEGRO_DISPLAY* display = NULL;
 ALLEGRO_EVENT_QUEUE *event_queue = NULL;
-ALLEGRO_EVENT event;
+ALLEGRO_BITMAP *image = NULL;
+ALLEGRO_BITMAP *image2 = NULL;
+ALLEGRO_BITMAP *image3 = NULL;
+ALLEGRO_BITMAP *background = NULL;
+ALLEGRO_KEYBOARD_STATE keyState ;
+ALLEGRO_TIMER *timer = NULL;
+ALLEGRO_TIMER *timer2 = NULL;
+ALLEGRO_TIMER *timer3 = NULL;
+ALLEGRO_SAMPLE *song=NULL;
+ALLEGRO_FONT *font = NULL;
 
-#define UP 0
-#define DOWN 1
-#define LEFT 2
-#define RIGHT 3
+//Custom Definition
 
-const int width = 800;
-const int height = 600;
+const float FPS = 60;
+const int WIDTH = 1080;
+const int HEIGHT = 720;
 
-int pos_x, pos_y; // The position of rectangle's left-up corner.
 
-void show_err_msg(int msg);
-void game_init();
-void game_begin();
-int process_event();
-int game_run();
-void game_destroy();
+Character character1;
+Character character2;
+Character character3;
 
-/*
-    You can declare some variables here if it is useful for you.
-*/
-bool keys[4];
+int imageWidth = 0;
+int imageHeight = 0;
+int draw = 0;
+int done = 0;
+int window = 0;
+bool judge_next_window = false;
+bool ture = true; //true: appear, false: disappear
+bool next = false; //true: trigger
+bool dir = true; //true: left, false: right
+int pos_x,pos_y;
 
 
 int main(int argc, char *argv[]) {
@@ -38,129 +51,136 @@ int main(int argc, char *argv[]) {
 
     game_init();
     game_begin();
-    printf("Hello world4!!!\n");
 
     while (msg != GAME_TERMINATE) {
         msg = game_run();
         if (msg == GAME_TERMINATE)
-            printf("See you, world\n");
+            printf("Game Over\n");
     }
+
     game_destroy();
     return 0;
 }
 
 
-//void show_err_msg(int msg) {
-//    fprintf(stderr, "unexpected msg: %d", msg);
-//    game_destroy();
-//    exit(9);
-//}
 
-void game_init() {
-    if (!al_init()) {
-        show_err_msg(-1);
-    }
-    memset(keys,false,4*sizeof(bool));
-
-    pos_x = width / 2;
-    pos_y = height / 2;
-
-    display = al_create_display(width, height);
-    event_queue = al_create_event_queue();
-
-    if (display == NULL || event_queue == NULL) {
-        show_err_msg(-1);
-    }
-
-    /*
-        TODO: Something need to be created, initialized and registered.
-    */
-    al_init_primitives_addon();
-    al_install_keyboard();
-
-    al_register_event_source(event_queue,al_get_keyboard_event_source());
-}
-
-void game_begin() {
-    al_clear_to_color(al_map_rgb(0,0,0));
-    al_draw_filled_rectangle(pos_x, pos_y, pos_x + 30, pos_y + 30, al_map_rgb(255,0,255));
-    al_flip_display();
-}
-
-int process_event() {
+int process_event(){
+    // Request the event
+    ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
-    /*
-        TODO: Process the mouse event.
-        Seperate the processing fo click event and moving event is encouraged.
-    */
+
+
+    // Our setting for controlling animation
+    if(event.timer.source == timer){
+        if(character2.x < -150) dir = false;
+        else if(character2.x > WIDTH+50) dir = true;
+
+        if(dir) character2.x -= 10;
+        else character2.x += 10;
+    }
+    if(event.timer.source == timer2){
+        ture = false;
+        next = true;
+    }
+    if(event.timer.source == timer3){
+        if(next) next = false;
+        else ture = true;
+    }
+
+
     switch(event.type){
-        case ALLEGRO_EVENT_KEY_DOWN:
-            switch(event.keyboard.keycode){
-                case ALLEGRO_KEY_UP:
-                    keys[UP]    = true;
-                    break;
-                case ALLEGRO_KEY_DOWN:
-                    keys[DOWN]  = true;
-                    break;
-                case ALLEGRO_KEY_LEFT:
-                    keys[LEFT]  = true;
-                    break;
-                case ALLEGRO_KEY_RIGHT:
-                    keys[RIGHT] = true;
-                    break;
-            }
+        /// close the window
+        case ALLEGRO_EVENT_DISPLAY_CLOSE:
+            return GAME_TERMINATE;
             break;
 
+        /// follow the mouse
+        case ALLEGRO_EVENT_MOUSE_AXES:
+            pos_x = event.mouse.x;
+            pos_y = event.mouse.y;
+            break;
+
+        /// Control by keyboard
         case ALLEGRO_EVENT_KEY_UP:
             switch(event.keyboard.keycode){
-                case ALLEGRO_KEY_UP:
-                    keys[UP]    = false;
+                // Control
+                case ALLEGRO_KEY_W:
+                    character1.y -= 30;
                     break;
-                case ALLEGRO_KEY_DOWN:
-                    keys[DOWN]  = false;
+                case ALLEGRO_KEY_S:
+                    character1.y += 30;
                     break;
-                case ALLEGRO_KEY_LEFT:
-                    keys[LEFT]  = false;
+                case ALLEGRO_KEY_A:
+                    character1.x -= 30;
                     break;
-                case ALLEGRO_KEY_RIGHT:
-                    keys[RIGHT] = false;
+                case ALLEGRO_KEY_D:
+                    character1.x += 30;
                     break;
-                case ALLEGRO_KEY_ESCAPE:
-                    return GAME_TERMINATE;
+
+                // For Start Menu
+                case ALLEGRO_KEY_ENTER:
+                    judge_next_window = true;
                     break;
             }
-            break;
-
-        case ALLEGRO_EVENT_DISPLAY_CLOSE:
-//            al_show_native_message_box(NULL, NULL, NULL,
-//                "Esc to initialize allegro!", NULL, NULL);
-            al_rest(3);
-            return GAME_TERMINATE;
 
     }
 
-    pos_y -= keys[UP]   *10;
-    pos_y += keys[DOWN] *10;
-    pos_x -= keys[LEFT] *10;
-    pos_x += keys[RIGHT]*10;
-
-//    al_clear_to_color(al_map_rgb(0,0,0));
-    al_draw_filled_rectangle(pos_x,pos_y,pos_x+30,pos_y+30,
-                             al_map_rgb(255,0,255));
+    al_draw_filled_circle(pos_x,pos_y,20,al_map_rgb(BLUE));
     al_flip_display();
+    if(window == 1)
+        al_draw_bitmap(background,BLACK);
 
     return 0;
 }
 
 int game_run() {
     int error = 0;
-    if (!al_is_event_queue_empty(event_queue)) {
-        error = process_event();
+    // First window(Menu)
+    if(window == 0){
+        if (!al_is_event_queue_empty(event_queue)) {
+            error = process_event1();
+            if(judge_next_window) {
+                window = 2;
+                // Setting Character
+                character1.x = WIDTH / 2;
+                character1.y = HEIGHT / 2 + 150;
+                character2.x = WIDTH + 100;
+                character2.y = HEIGHT / 2 - 280;
+                character1.image_path = al_load_bitmap("tower.png");
+                character2.image_path = al_load_bitmap("teemo_left.png");
+                character3.image_path = al_load_bitmap("teemo_right.png");
+                background = al_load_bitmap("stage.jpg");
+
+                //Initialize Timer
+                timer  = al_create_timer(1.0/15.0);
+                timer2  = al_create_timer(1.0);
+                timer3  = al_create_timer(1.0/10.0);
+                al_register_event_source(event_queue, al_get_timer_event_source(timer)) ;
+                al_register_event_source(event_queue, al_get_timer_event_source(timer2)) ;
+                al_register_event_source(event_queue, al_get_timer_event_source(timer3)) ;
+                al_start_timer(timer);
+                al_start_timer(timer2);
+                al_start_timer(timer3);
+            }
+        }
+    }
+    // Second window(Main Game)
+    else if(window == 2){
+        // Change Image for animation
+        al_draw_bitmap(background, 0,0, 0);
+        if(ture) al_draw_bitmap(character1.image_path, character1.x, character1.y, 0);
+
+        if(dir) al_draw_bitmap(character2.image_path, character2.x, character2.y, 0);
+        else al_draw_bitmap(character3.image_path, character2.x, character2.y, 0);
+
+        al_flip_display();
+        al_clear_to_color(al_map_rgb(0,0,0));
+
+        // Listening for new event
+        if (!al_is_event_queue_empty(event_queue)) {
+            error = process_event();
+        }
     }
     return error;
 }
 
-void game_destroy() {
-    al_destroy_event_queue(event_queue);
-    al_destroy_display(display);
-}
