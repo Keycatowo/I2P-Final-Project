@@ -2,7 +2,7 @@
 
 extern ALLEGRO_BITMAP *background;
 extern ALLEGRO_BITMAP *skin_backage;
-
+extern ALLEGRO_SAMPLE *song;
 void draw_with_skin(int skin_code,int x,int y);
 void fill_with_skin(int skin_code);
 
@@ -13,8 +13,17 @@ int game_render(int windows_x){
     switch(windows_x){
         case 1:
             background = al_load_bitmap("Menu.png");
-            al_draw_bitmap(background,0,0,0);
+//            al_draw_bitmap(background,0,0,0);
             break;
+        case 6:
+            background = al_load_bitmap("Pause.png");
+
+        case 8:
+            background = al_load_bitmap("Battle.png");
+            song = al_load_sample("Battle.mp3");
+            al_play_sample(song, 1.0, 0.0, 1.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+//            al_draw_bitmap(background,0,0,0);
+//            break;
         case 10:
             skin_backage = al_load_bitmap("skin1.png");
             fill_with_skin(1);
@@ -28,8 +37,12 @@ int game_render(int windows_x){
 
 void draw_with_skin(int skin_code,int x,int y){
     switch(skin_code){
-        case 1:
+        case 1:/// grass
             al_draw_bitmap_region(skin_backage,129,32,60,60,
+                                  60*x,60*y,0);
+            break;
+        case 2:/// sand
+            al_draw_bitmap_region(skin_backage,130,130,60,60,
                                   60*x,60*y,0);
             break;
     }
@@ -43,3 +56,4 @@ void fill_with_skin(int skin_code){
             draw_with_skin(skin_code,i,j);
 
 }
+

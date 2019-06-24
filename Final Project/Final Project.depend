@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561372326 source:d:\documents\i2p_final_project\final project\main.cpp
+1561405268 source:d:\documents\i2p_final_project\final project\main.cpp
 	"head_files.h"
 
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro.h
@@ -274,7 +274,7 @@
 	<stdlib.h>
 	"head_files.h"
 
-1561372374 d:\documents\i2p_final_project\final project\head_files.h
+1561403529 d:\documents\i2p_final_project\final project\head_files.h
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
@@ -283,11 +283,12 @@
 	<allegro5/allegro_acodec.h>
 	<allegro5/allegro_font.h>
 	<allegro5/allegro_ttf.h>
+	<windows.h>
 
-1561371771 source:d:\documents\i2p_final_project\final project\game_init.cpp
+1561395449 source:d:\documents\i2p_final_project\final project\game_init.cpp
 	"head_files.h"
 
-1561372282 source:d:\documents\i2p_final_project\final project\game_run.cpp
+1561404513 source:d:\documents\i2p_final_project\final project\game_run.cpp
 	"head_files.h"
 
 1561296374 source:d:\documents\i2p_final_project\final project\head_files.h
@@ -307,9 +308,12 @@
 	"allegro5/allegro.h"
 	"allegro5/allegro_audio.h"
 
-1561350367 source:d:\documents\i2p_final_project\final project\game_render.cpp
+1561405268 source:d:\documents\i2p_final_project\final project\game_render.cpp
 	"head_files.h"
 
-1561350367 source:d:\documents\i2p_final_project\final project\game_anime.cpp
+1561389951 source:d:\documents\i2p_final_project\final project\game_anime.cpp
+	"head_files.h"
+
+1561388420 source:d:\documents\i2p_final_project\final project\game_characters.cpp
 	"head_files.h"
 

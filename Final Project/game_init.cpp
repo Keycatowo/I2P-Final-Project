@@ -10,11 +10,13 @@ extern ALLEGRO_TIMER *timer2;
 extern ALLEGRO_TIMER *timer3;
 extern ALLEGRO_BITMAP *image;
 extern ALLEGRO_SAMPLE *song;
+extern ALLEGRO_SAMPLE *BGM;
 extern ALLEGRO_FONT *font;
 extern ALLEGRO_BITMAP *background;
 extern ALLEGRO_BITMAP *mouse;
 extern ALLEGRO_BITMAP *skin_backage;
 extern ALLEGRO_BITMAP *wait;
+extern ALLEGRO_BITMAP *wait2;
 
 void game_init() {
     if (!al_init()) {
@@ -53,18 +55,24 @@ void game_init() {
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
     al_register_event_source(event_queue, al_get_mouse_event_source());
+    hide_cursor();
 }
 
 
 void game_begin() {
     // Load sound
-    song = al_load_sample( "hello.wav" );
+    song = al_load_sample( "op.wav" );
     if (!song){
         printf( "Audio clip sample not loaded!\n" );
         show_err_msg(-6);
     }
+//    BGM = al_load_sample("Battle.wav");
+//    if (!BGM){
+//        printf( "Audio clip sample not loaded!\n" );
+//        show_err_msg(-6);
+//    }
     // Loop the song until the display closes
-    al_play_sample(song, 0, 0.0, 2.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+    al_play_sample(song, 0.5, 0.0, 0.8, ALLEGRO_PLAYMODE_LOOP, NULL);
     al_clear_to_color(al_map_rgb(BLACK));
     // draw the background
     background = al_load_bitmap("Menu.png");
@@ -76,8 +84,8 @@ void game_begin() {
 //    al_draw_rectangle(WIDTH/2-150, 510, WIDTH/2+150, 550, al_map_rgb(255, 255, 255), 0);
 
     mouse = al_load_bitmap("mouse.gif");
-    wait  = al_load_bitmap("Wait.gif");
-
+    wait  = al_load_bitmap("wating_bar_1.png");
+    wait2 = al_load_bitmap("wating_bar_2.png");
     al_flip_display();
 }
 
@@ -94,6 +102,17 @@ void game_destroy() {
     al_destroy_bitmap(background);
     al_destroy_bitmap(skin_backage);
     al_destroy_bitmap(wait);
+    al_destroy_bitmap(wait2);
     al_destroy_bitmap(mouse);
     al_destroy_sample(song);
+}
+
+void hide_cursor(){
+
+    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_CURSOR_INFO CursorInfo;
+    GetConsoleCursorInfo(handle, &CursorInfo);
+    CursorInfo.bVisible = false;
+    SetConsoleCursorInfo(handle, &CursorInfo);
+
 }
