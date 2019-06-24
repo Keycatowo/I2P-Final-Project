@@ -12,7 +12,17 @@ extern ALLEGRO_DISPLAY* display;
 extern const int WIDTH = 1080;
 extern const int HEIGHT = 720;
 extern ALLEGRO_EVENT_QUEUE *event_queue;
-const char *title = "Final Project 10xxxxxxx";
+const char *title = "Final Project 106022103";
+extern ALLEGRO_TIMER *timer;
+extern ALLEGRO_TIMER *timer2;
+extern ALLEGRO_TIMER *timer3;
+extern ALLEGRO_BITMAP *image;
+extern ALLEGRO_SAMPLE *song;
+extern ALLEGRO_FONT *font;
+extern ALLEGRO_BITMAP *background;
+extern ALLEGRO_BITMAP *mouse;
+extern ALLEGRO_BITMAP *skin_backage;
+extern ALLEGRO_BITMAP *wait;
 
 void game_init() {
     if (!al_init()) {
@@ -53,9 +63,7 @@ void game_init() {
     al_register_event_source(event_queue, al_get_mouse_event_source());
 }
 
-extern ALLEGRO_SAMPLE *song;
-extern ALLEGRO_FONT *font;
-extern ALLEGRO_BITMAP *background;
+
 void game_begin() {
     // Load sound
     song = al_load_sample( "hello.wav" );
@@ -71,19 +79,18 @@ void game_begin() {
     al_draw_bitmap(background,0,0,0);
     // Load and draw text
     font = al_load_ttf_font("pirulen.ttf",12,0);
-    al_draw_text(font, al_map_rgb(255,255,255), WIDTH/2, HEIGHT/2+200, ALLEGRO_ALIGN_CENTRE, "Press 'Enter' to start");
+//    al_draw_text(font, al_map_rgb(255,255,255), WIDTH/2, HEIGHT/2+200, ALLEGRO_ALIGN_CENTRE, "Press 'Enter' to start");
 
 //    al_draw_rectangle(WIDTH/2-150, 510, WIDTH/2+150, 550, al_map_rgb(255, 255, 255), 0);
 
+    mouse = al_load_bitmap("mouse.gif");
+    wait  = al_load_bitmap("Wait.gif");
 
     al_flip_display();
 }
 
 
-extern ALLEGRO_TIMER *timer;
-extern ALLEGRO_TIMER *timer2;
-extern ALLEGRO_TIMER *timer3;
-extern ALLEGRO_BITMAP *image;
+
 void game_destroy() {
     // Make sure you destroy all things
     al_destroy_event_queue(event_queue);
@@ -92,5 +99,9 @@ void game_destroy() {
     al_destroy_timer(timer2);
     al_destroy_timer(timer3);
     al_destroy_bitmap(image);
+    al_destroy_bitmap(background);
+    al_destroy_bitmap(skin_backage);
+    al_destroy_bitmap(wait);
+    al_destroy_bitmap(mouse);
     al_destroy_sample(song);
 }

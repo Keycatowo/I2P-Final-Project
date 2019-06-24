@@ -14,7 +14,10 @@ void game_begin();
 int process_event();
 int game_run();
 void game_destroy();
+//int process_event0();
 int process_event1();
+int process_event2();
+int game_render(int windows_x);
 typedef struct character
 {
     int x;
