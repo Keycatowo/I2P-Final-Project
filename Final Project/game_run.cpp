@@ -9,6 +9,7 @@ extern bool judge_next_window;
 extern int window;
 int switch_button(int x,int y);
 extern character character1;
+extern ALLEGRO_TIMER *timer;
 
 int process_event1(){
     /*
@@ -20,7 +21,6 @@ int process_event1(){
 
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
-
 
     switch(event.type){
         /// close the window
@@ -105,13 +105,17 @@ int switch_button(int x,int y){
 
 int process_event10(){
     /*
-        Menu 1
-          |_ Start 2 - region 10
-          |_ Save & Load 3
-          |_ Setting 9
+        Basic region 10
+          |_ Pause
+          |_ region 11
+          |_
     */
     ALLEGRO_EVENT event;
     al_wait_for_event(event_queue, &event);
+
+    if(event.timer.source == timer){
+        character1.type = (character1.type+1)%3;
+    }
 
 
     switch(event.type){
@@ -125,16 +129,20 @@ int process_event10(){
             switch(event.keyboard.keycode){
                 // Control
                 case ALLEGRO_KEY_UP:
-                    character1.y -= 30;
+                    character1.y -= UNIT_SETP;
+                    character1.direction = UP;
                     break;
                 case ALLEGRO_KEY_DOWN:
-                    character1.y += 30;
+                    character1.y += UNIT_SETP;
+                    character1.direction = DOWN;
                     break;
                 case ALLEGRO_KEY_LEFT:
-                    character1.x -= 30;
+                    character1.x -= UNIT_SETP;
+                    character1.direction = LEFT;
                     break;
                 case ALLEGRO_KEY_RIGHT:
-                    character1.x += 30;
+                    character1.x += UNIT_SETP;
+                    character1.direction = RIGHT;
                     break;
 
                 // For Start Menu
@@ -142,6 +150,14 @@ int process_event10(){
                     return window = 1;
                     break;
             }
+            break;
+        /// Control by mouse
+        case ALLEGRO_EVENT_MOUSE_AXES:
+            pos_x = event.mouse.x;
+            pos_y = event.mouse.y;
+            break;
+        case ALLEGRO_EVENT_MOUSE_BUTTON_DOWN:
+            printf("%d %d\n",pos_x,pos_y);
             break;
     }
     return 0;

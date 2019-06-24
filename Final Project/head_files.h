@@ -21,10 +21,17 @@ int process_event1();
 int process_event2();
 int process_event10();
 int game_render(int windows_x);
+
+#define DOWN  0
+#define LEFT  1
+#define RIGHT 2
+#define UP    3
+#define UNIT_SETP 60
 typedef struct character
 {
-    int x;
-    int y;
+    int x;int y;
+    int type;
+    int direction;
     ALLEGRO_BITMAP *image_path;
 
 }Character;

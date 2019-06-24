@@ -73,12 +73,18 @@ int game_run() {
         /// 2 : game start
         case 2:
             animate_wait(0.5);
-            animate_start();
+//            animate_start();
             window = 10;
             game_render(10);
-            character1.x = 30;
-            character1.y = 330;
+            // initialize Cats
+            character1.x = 12;
+            character1.y = 310;
+            character1.type = 0;
+            character1.direction = RIGHT;
             character1.image_path = al_load_bitmap("cats.png");
+            timer = al_create_timer(1.0);
+            al_register_event_source(event_queue,al_get_timer_event_source(timer));
+            al_start_timer(timer);
             break;
 
         /// 3 : Save & Load
@@ -96,10 +102,14 @@ int game_run() {
         case 10:
             error = process_event10();
             fill_with_skin(1);
-            al_draw_bitmap(character1.image_path,character1.x,character1.y,0);
+//            al_draw_bitmap(character1.image_path,character1.x,character1.y,0);
+            al_draw_bitmap_region(character1.image_path,
+                                  0+33*character1.type,0+33*character1.direction,
+                                  33,33, character1.x,character1.y, 0);
             break;
 
     }
+
 
     al_flip_display();
     return error;

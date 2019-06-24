@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561350242 source:d:\documents\i2p_final_project\final project\main.cpp
+1561372326 source:d:\documents\i2p_final_project\final project\main.cpp
 	"head_files.h"
 
 1372628331 d:\documents\i2p_final_project\allegro-5.0.10-mingw-4.7.0\allegro-5.0.10-mingw-4.7.0\include\allegro5\allegro.h
@@ -274,7 +274,7 @@
 	<stdlib.h>
 	"head_files.h"
 
-1561350542 d:\documents\i2p_final_project\final project\head_files.h
+1561372374 d:\documents\i2p_final_project\final project\head_files.h
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_primitives.h>
@@ -284,10 +284,10 @@
 	<allegro5/allegro_font.h>
 	<allegro5/allegro_ttf.h>
 
-1561346202 source:d:\documents\i2p_final_project\final project\game_init.cpp
+1561371771 source:d:\documents\i2p_final_project\final project\game_init.cpp
 	"head_files.h"
 
-1561350261 source:d:\documents\i2p_final_project\final project\game_run.cpp
+1561372282 source:d:\documents\i2p_final_project\final project\game_run.cpp
 	"head_files.h"
 
 1561296374 source:d:\documents\i2p_final_project\final project\head_files.h

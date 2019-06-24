@@ -64,7 +64,7 @@ void game_begin() {
         show_err_msg(-6);
     }
     // Loop the song until the display closes
-    al_play_sample(song, 0.1, 0.0, 2.0, ALLEGRO_PLAYMODE_LOOP, NULL);
+    al_play_sample(song, 0, 0.0, 2.0, ALLEGRO_PLAYMODE_LOOP, NULL);
     al_clear_to_color(al_map_rgb(BLACK));
     // draw the background
     background = al_load_bitmap("Menu.png");
