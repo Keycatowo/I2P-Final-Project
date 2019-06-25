@@ -3,16 +3,58 @@
 extern ALLEGRO_BITMAP *wait;
 extern ALLEGRO_BITMAP *wait2;
 extern ALLEGRO_BITMAP *background;
-
+extern ALLEGRO_FONT *font;
+void print_word(float sec,const char *text ){
+    al_clear_to_color(al_map_rgb(BLACK));
+    al_flip_display();
+    al_draw_text(font,al_map_rgb(WHITE),540,360,
+                     ALLEGRO_ALIGN_CENTER, text);
+    al_flip_display();
+    al_rest(sec);
+}
 void animate_start(){
         al_clear_to_color(al_map_rgb(BLACK));
-        background = al_load_bitmap("Map.png");
-        al_draw_bitmap(background,0,0,0);
         al_flip_display();
+        al_rest(0.5);
+//        al_draw_text(font,al_map_rgb(WHITE),540,360,
+//                     ALLEGRO_ALIGN_CENTER, "Long long time ago");
+//        al_flip_display();
+//        al_rest(0.5);
+        print_word(0.3,"Long");
+        print_word(0.3,"Long long ");
+        print_word(0.3,"Long long time");
+        print_word(0.3,"Long long time ago");
+        al_rest(0.8);
+        print_word(0.3,"");
+        print_word(0.3,"There");
+        print_word(0.3,"There was");
+        print_word(0.3,"There was a");
+        print_word(0.3,"There was a cat");
+        print_word(0.3,"There was a cat named");
+        print_word(0.3,"There was a cat named Bubble.");
         al_rest(1.0);
+        print_word(0.3,"");
+        print_word(0.3,"And");
+        print_word(0.3,"And .");
+        print_word(0.3,"And . .");
+        print_word(0.3,"And . . .");
+        al_rest(0.8);
+        print_word(0.3,"");
+        print_word(0.3,"Here");
+        print_word(0.3,"Here is ");
+        print_word(0.3,"Here is the ");
+        print_word(0.3,"Here is the story");
+        print_word(0.3,"Here is the story of him.");
+        al_rest(2.0);
+}
+void animate_start2(){
+    al_flip_display();
+    al_rest(0.5);
+    cut_to_movie();
+
+
 
 }
-
 void animate_wait(float time){
     float t = time / 10.0;
     /// waiting bar background

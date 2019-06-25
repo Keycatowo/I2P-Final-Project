@@ -9,6 +9,7 @@ extern ALLEGRO_TIMER *timer;
 extern ALLEGRO_TIMER *timer2;
 extern ALLEGRO_TIMER *timer3;
 extern ALLEGRO_BITMAP *image;
+extern ALLEGRO_BITMAP *image2;
 extern ALLEGRO_SAMPLE *song;
 extern ALLEGRO_SAMPLE *BGM;
 extern ALLEGRO_FONT *font;
@@ -55,6 +56,8 @@ void game_init() {
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_keyboard_event_source());
     al_register_event_source(event_queue, al_get_mouse_event_source());
+    timer = al_create_timer(0.25);
+    al_register_event_source(event_queue,al_get_timer_event_source(timer));
     hide_cursor();
 }
 
@@ -72,16 +75,14 @@ void game_begin() {
 //        show_err_msg(-6);
 //    }
     // Loop the song until the display closes
-    al_play_sample(song, 0.5, 0.0, 0.8, ALLEGRO_PLAYMODE_LOOP, NULL);
+    al_play_sample(song, 0.7, 0.0, 0.8, ALLEGRO_PLAYMODE_LOOP, NULL);
     al_clear_to_color(al_map_rgb(BLACK));
     // draw the background
     background = al_load_bitmap("Menu.png");
     al_draw_bitmap(background,0,0,0);
     // Load and draw text
-    font = al_load_ttf_font("pirulen.ttf",12,0);
-//    al_draw_text(font, al_map_rgb(255,255,255), WIDTH/2, HEIGHT/2+200, ALLEGRO_ALIGN_CENTRE, "Press 'Enter' to start");
-
-//    al_draw_rectangle(WIDTH/2-150, 510, WIDTH/2+150, 550, al_map_rgb(255, 255, 255), 0);
+    font = al_load_ttf_font("pirulen.ttf",32,0);
+//    font = al_load_ttf_font("HanyiSentyMeadow.ttf",32,0);
 
     mouse = al_load_bitmap("mouse.gif");
     wait  = al_load_bitmap("wating_bar_1.png");
@@ -99,12 +100,14 @@ void game_destroy() {
     al_destroy_timer(timer2);
     al_destroy_timer(timer3);
     al_destroy_bitmap(image);
+    al_destroy_bitmap(image2);
     al_destroy_bitmap(background);
     al_destroy_bitmap(skin_backage);
     al_destroy_bitmap(wait);
     al_destroy_bitmap(wait2);
     al_destroy_bitmap(mouse);
     al_destroy_sample(song);
+    al_destroy_sample(BGM);
 }
 
 void hide_cursor(){
