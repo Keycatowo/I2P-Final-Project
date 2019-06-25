@@ -73,7 +73,7 @@ int game_run() {
             break;
         /// 2 : game start
         case 2:
-            animate_start();
+//            animate_start();
             window = 10;
             game_render(10);
             set_character_1_in_left_center();
@@ -138,10 +138,11 @@ int game_run() {
                                   0+33*character1.type,0+33*character1.direction,
                                   33,33, character1.x,character1.y,0);
             game_render(12);
-            animate_start2();
             al_draw_bitmap_region(character2.image_path,
                                   72+24*character2.type,130+33*character1.direction,
                                   24,33, character2.x,character2.y,0);
+            animate_start2();
+
             window = 13;
             break;
         case 13:

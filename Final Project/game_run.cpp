@@ -7,6 +7,7 @@ extern ALLEGRO_BITMAP *background;
 extern ALLEGRO_BITMAP *image;
 extern ALLEGRO_BITMAP *mouse;
 extern ALLEGRO_SAMPLE *song;
+extern ALLEGRO_SAMPLE *BGM;
 extern bool judge_next_window;
 extern int window;
 extern int prev_window;
@@ -62,12 +63,12 @@ int process_event1(){
             switch(menu_case){
                 case 1:
                     /// Click Start
-//                    animate_wait(0.5);
+                    animate_wait(1.5);
                     game_render(2);
                     return window = 2;
                     break;
                 case 2:
-                    /// Click Load
+                    /// Click Save&Load
                     game_render(3);
                     return window = 3;
                     break;
@@ -89,6 +90,7 @@ int process_event1(){
 //    al_draw_filled_circle(pos_x,pos_y,20,al_map_rgb(BLUE));
     al_draw_bitmap(mouse,pos_x-35,pos_y-35,0);
     al_draw_bitmap(background,0,0,0);
+    al_draw_bitmap(image,0,0,0);
 //    al_flip_display();
 
     return 0;
@@ -239,7 +241,8 @@ int process_event6(){
             int pause_case = switch_button_6(pos_x,pos_y);
             switch(pause_case){
                 case 1:
-                    return window = 3;
+                    game_render(1);
+                    return window = 1;
                 case 2:
                     game_render(1);
                     return window = 1;
@@ -251,8 +254,12 @@ int process_event6(){
                     al_stop_samples();
                     break;
                 case 5:
+                    al_stop_samples();
+                    al_play_sample(BGM,1,0,1,ALLEGRO_PLAYMODE_LOOP,NULL);
                     break;
                 case 6:
+                    al_stop_samples();
+                    al_play_sample(BGM,1,0,1,ALLEGRO_PLAYMODE_LOOP,NULL);
                     break;
                 case 7:
                     return window = 2;
@@ -352,6 +359,8 @@ int process_event8(){
     {
         character1.type ++;
         check = true;
+        animate_wait(0.8);
+        animate_start3();
         game_render(prev_window);
         return window = prev_window;
     }

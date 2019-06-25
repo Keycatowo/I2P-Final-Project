@@ -58,6 +58,7 @@ void draw_map_12();
 void animate_wait(float time);
 void animate_start();
 void animate_start2();
+void animate_start3();
 void cut_to_from_left();
 void cut_to_movie();
 

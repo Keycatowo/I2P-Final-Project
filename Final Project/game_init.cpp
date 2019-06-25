@@ -10,6 +10,7 @@ extern ALLEGRO_TIMER *timer2;
 extern ALLEGRO_TIMER *timer3;
 extern ALLEGRO_BITMAP *image;
 extern ALLEGRO_BITMAP *image2;
+extern ALLEGRO_BITMAP *image3;
 extern ALLEGRO_SAMPLE *song;
 extern ALLEGRO_SAMPLE *BGM;
 extern ALLEGRO_FONT *font;
@@ -69,7 +70,7 @@ void game_begin() {
         printf( "Audio clip sample not loaded!\n" );
         show_err_msg(-6);
     }
-//    BGM = al_load_sample("Battle.wav");
+    BGM = al_load_sample("poke.wav");
 //    if (!BGM){
 //        printf( "Audio clip sample not loaded!\n" );
 //        show_err_msg(-6);
@@ -80,6 +81,8 @@ void game_begin() {
     // draw the background
     background = al_load_bitmap("Menu.png");
     al_draw_bitmap(background,0,0,0);
+    image = al_load_bitmap("title.png");
+    al_draw_bitmap(image,0,0,0);
     // Load and draw text
     font = al_load_ttf_font("pirulen.ttf",32,0);
 //    font = al_load_ttf_font("HanyiSentyMeadow.ttf",32,0);
@@ -101,6 +104,7 @@ void game_destroy() {
     al_destroy_timer(timer3);
     al_destroy_bitmap(image);
     al_destroy_bitmap(image2);
+    al_destroy_bitmap(image3);
     al_destroy_bitmap(background);
     al_destroy_bitmap(skin_backage);
     al_destroy_bitmap(wait);

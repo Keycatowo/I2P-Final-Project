@@ -3,6 +3,7 @@
 extern ALLEGRO_BITMAP *wait;
 extern ALLEGRO_BITMAP *wait2;
 extern ALLEGRO_BITMAP *background;
+extern ALLEGRO_BITMAP *image;
 extern ALLEGRO_FONT *font;
 void print_word(float sec,const char *text ){
     al_clear_to_color(al_map_rgb(BLACK));
@@ -47,10 +48,47 @@ void animate_start(){
         print_word(0.3,"Here is the story of him.");
         al_rest(2.0);
 }
+
 void animate_start2(){
     al_flip_display();
-    al_rest(0.5);
+    al_rest(1.0);
     cut_to_movie();
+    al_draw_bitmap(image,0,0,0);
+    al_flip_display();
+    al_rest(0.5);
+
+}
+void animate_start3(){
+    al_clear_to_color(al_map_rgb(BLACK));
+    al_flip_display();
+    al_rest(0.5);
+    print_word(0.3,"Finally");
+    print_word(0.3,"Finally .");
+    print_word(0.3,"Finally . .");
+    print_word(0.8,"Finally . . .");
+    print_word(0.3,"");
+    print_word(0.3,"You");
+    print_word(0.3,"You defeat");
+    print_word(0.3,"You defeat the ");
+    print_word(0.8,"You defeat the boss");
+    print_word(0.3,"");
+    print_word(0.5,"However");
+    print_word(0.3,"It's");
+    print_word(0.3,"It's just");
+    print_word(0.3,"It's just the ");
+    print_word(0.8,"It's just the beginning.");
+    print_word(0.3,"");
+    print_word(0.3,"There");
+    print_word(0.3,"There will ");
+    print_word(0.3,"There will be");
+    print_word(0.3,"There will be some");
+    print_word(0.05,"There will be som");
+    print_word(0.05,"There will be so");
+    print_word(0.05,"There will be s");
+    print_word(0.1,"There will be");
+    print_word(0.3,"There will be more");
+    print_word(0.3,"There will be more and more");
+    print_word(1.2,"There will be more and more challenges.");
 
 
 

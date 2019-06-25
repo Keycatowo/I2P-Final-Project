@@ -55,8 +55,12 @@ int game_render(int windows_x){
             al_flip_display();
             return 10;
             break;
+        case 11:
+            set_character_1_in_left_center();
+            break;
         case 12:
             set_character_2_in_red_center();
+            image = al_load_bitmap("shock.png");
 
             break;
         case 20:
